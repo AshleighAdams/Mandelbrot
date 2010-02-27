@@ -1,0 +1,9 @@
+C:\Users\C0BRA\Documents\Visual Studio 2008\Projects\Mandelbrot2\Mandelbrot2\bin\Release\Mandelbrot2.exe
+C:\Users\C0BRA\Documents\Visual Studio 2008\Projects\Mandelbrot2\Mandelbrot2\bin\Release\Mandelbrot2.pdb
+C:\Users\C0BRA\Documents\Visual Studio 2008\Projects\Mandelbrot2\Mandelbrot2\bin\Release\OpenTK.dll
+C:\Users\C0BRA\Documents\Visual Studio 2008\Projects\Mandelbrot2\Mandelbrot2\bin\Release\OpenTK.GLControl.dll
+C:\Users\C0BRA\Documents\Visual Studio 2008\Projects\Mandelbrot2\Mandelbrot2\bin\Release\OpenTK.GLControl.xml
+C:\Users\C0BRA\Documents\Visual Studio 2008\Projects\Mandelbrot2\Mandelbrot2\bin\Release\OpenTK.xml
+C:\Users\C0BRA\Documents\Visual Studio 2008\Projects\Mandelbrot2\Mandelbrot2\obj\Release\ResolveAssemblyReference.cache
+C:\Users\C0BRA\Documents\Visual Studio 2008\Projects\Mandelbrot2\Mandelbrot2\obj\Release\Mandelbrot2.exe
+C:\Users\C0BRA\Documents\Visual Studio 2008\Projects\Mandelbrot2\Mandelbrot2\obj\Release\Mandelbrot2.pdb
