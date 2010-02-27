@@ -14,6 +14,8 @@ namespace Mandelbrot2
         private double scale = 4;
         private int max_iterations = 100;
         private bool changeit = true;
+        private int colormode = 0;
+        private int maxcolormode=1;
 
         public Window()
             : base(512, 512, GraphicsMode.Default, "Mandelbrot")
@@ -58,21 +60,39 @@ namespace Mandelbrot2
                     {
                         double oj = j;
                         j = j * j - k * k + xx;
-                        k = 2 * oj * k + yy; // Using the new a causes you to get strechy lines!
+                        k = 2 * oj * k + yy; // Using the new j causes you to get strechy lines!
                         iterations++;
                     }
 
                     if (iterations == this.max_iterations)
                     {
-                        r = (byte)(Math.Sqrt(j)*255.0);
-                        g = (byte)(Math.Sqrt(k)*255.0);
-                        b = (byte)(j*k);
+                        if (this.colormode == 1)
+                        {
+                            r = (byte)(Math.Sqrt(j) * 255.0);
+                            g = (byte)(Math.Sqrt(k) * 255.0);
+                            b = (byte)(j * k);
+                        }
+                        else if (this.colormode == 0)
+                        {
+                            r = 255;
+                            g = 240;
+                            b = 0;
+                        }
                     }
                     else
                     {
-                        r = (byte)(Math.Sqrt(j) * 255.0);
-                        g = (byte)(Math.Sqrt(k) * 255.0);
-                        b = (byte)(j * k);
+                        if (this.colormode == 1)
+                        {
+                            r = (byte)(Math.Sqrt(j)*255.0);
+                            g = (byte)(Math.Sqrt(k)*255.0);
+                            b = (byte)(j*k);
+                        }
+                        else if(this.colormode == 0)
+                        {
+                            r = iterations * 4;
+                            g = iterations * 2;
+                            b = iterations * 0;
+                        }
                     }
 
 
@@ -123,9 +143,37 @@ namespace Mandelbrot2
                     this.max_iterations = this.max_iterations - 50;
                 this.changeit = false;
             }
+            if (this.Keyboard[Key.C])
+            {
+                if (this.changeit)
+                    this.colormode = this.colormode + 1;
+                if (this.colormode > this.maxcolormode)
+                    this.colormode = 0;
+                this.changeit = false;
+            }
 
             // Stop is form constantly zooming
-            if( !this.Keyboard[Key.F] && !this.Keyboard[Key.R] ) { this.changeit = true; }
+            if( !this.Keyboard[Key.F] && !this.Keyboard[Key.R] && !this.Keyboard[Key.C] && !this.Mouse[MouseButton.Left] ) { this.changeit = true; }
+
+            // Our mouse controls
+            if (this.Mouse[MouseButton.Left])
+            {
+                if (this.changeit)
+                {
+                    int x = Mouse.X;
+                    int center_x = 512 / 2;
+                    int y = Mouse.Y;
+                    int center_y = 512 / 2;
+
+                    double xoff = (center_x - x)*this.scale;
+                    double yoff = (center_y - y)*this.scale;
+
+                    this.xoffset -= xoff;
+                    this.yoffset += yoff;
+                    
+                }
+                this.changeit = false;
+            }
         }
     }
 }
